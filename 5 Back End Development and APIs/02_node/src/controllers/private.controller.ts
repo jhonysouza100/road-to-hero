@@ -2,10 +2,8 @@ import { Request, Response } from "express"
 import { findMany } from "../services/private.service"
 import { handleHTTP } from "../utils/error.handle"
 import { JwtPayload } from "jsonwebtoken"
+import { RequestExt } from "../interfaces/request.extend.interface"
 
-interface RequestExt extends Request {
-  user?: string | JwtPayload
-}
 
 const getUsers = async (req: RequestExt, res: Response) => {
   try {

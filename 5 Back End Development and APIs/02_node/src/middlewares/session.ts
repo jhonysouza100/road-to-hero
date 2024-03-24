@@ -1,12 +1,8 @@
-import { NextFunction, Request, Response } from "express"
+import { NextFunction, Response } from "express"
+import { RequestExt } from "../interfaces/request.extend.interface"
 import { verifyToken } from "../utils/jwt.handle"
-import { JwtPayload } from "jsonwebtoken"
 
 type CleanToken = string
-
-interface RequestExt extends Request {
-  user?: string | JwtPayload
-}
 
 const checkJWT =(req: RequestExt, res: Response, next: NextFunction ) => {
 
@@ -16,8 +12,7 @@ const checkJWT =(req: RequestExt, res: Response, next: NextFunction ) => {
 
     const cleanToken: CleanToken = reqToken.split(' ').pop() as CleanToken // ['Bearer', '*****'] 
 
-    const token = verifyToken(cleanToken)
-
+    const token = verifyToken(cleanToken) as {id: string}
     if(!token) {
 
       res.status(401).send("INVALID_SESSION")
