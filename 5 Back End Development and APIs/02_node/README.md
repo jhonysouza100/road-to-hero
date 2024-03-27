@@ -4,15 +4,26 @@
 
 - Iniciar *package.json*
 ```bash
-npm init
+npm init -y
 ```
 
 
 ### Paso 2: Configurar TypeScript
+
+> Instala `typescript` de manera glogal para "desarrollo"
+
+```bash
+npm i typescript -g
+```
+
+> Instalar `tsc` de manera global para transpilar el "desarrollo"
+
+```bash
+npm i ts-node -g
+```
+
 > Crea un archivo de configuración de TypeScript llamado tsconfig.json en la raíz del proyecto.
 
-- Iniciar *tsconfig.json*
-  
 ```bash
 tsc --init
 ```
@@ -51,13 +62,13 @@ tsc --init
 > Dependencies
 
 ```bash
-npm i express cors dotenv moongoose
+npm i express cors dotenv mongoose
 ```
 
 > Development
 
 ```bash
-npm i typescript @types/node @types/express @types/cors @types/dotenv @types/mongoose ts-node nodemon -D
+npm i @types/node @types/express @types/cors @types/dotenv @types/mongoose @types/jsonwebtoken -D
 ```
 
 ### Paso 5: Crear el servidor
